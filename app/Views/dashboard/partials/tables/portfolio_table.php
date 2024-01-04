@@ -1,0 +1,47 @@
+<div class="table-responsive">
+	
+ <table class="table table-sm table-striped border" id="dTable">
+    <tr class="bg-light text-dark">
+      <td width="25">
+       No
+      </td>
+      <td>
+       Title
+      </td>
+      <td width="150">
+        Last Updated
+      </td>
+      <td width="40">
+       View
+      </td>
+      <td width="40">
+        Edit
+      </td>
+      <td width="40">
+        Delete
+      </td>
+    </tr>
+
+   <?php if(isset($all_portfolio)): ?>
+   	<?php $counter = 1; ?>
+      <?php foreach($all_portfolio as $port) : ?>
+        <tr>
+          <td class="bg-light text-dark"><?=$counter?></td>
+          <td><?=$port['title']?></td>
+          <td><?= substr($port['createdAt'], 0,10) ?></td>
+          
+          <td>
+            <span class="d-inline-block p-0 m-0" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Disabled popover">
+              <button class="btn btn-primary py-0 btn-small" type="button" disabled><i class="bi bi-eye"></i></button>
+            </span>
+        </td>
+
+          <td><a href="<?=base_url('/dashboard/edit/portfolio/'.$port['id'])?>" class="btn btn-sm btn-primary "><i class="bi bi-pencil"></i></a></td>
+          <td><button class="btn btn-sm btn-danger rounded-circle"><i class="bi bi-trash"></i></button></td>
+        </tr>
+        <?php $counter++?>
+      <?php endforeach  ?>
+    <?php endif ?>
+  </table>
+
+</div>
